@@ -14,6 +14,7 @@ function count() {
 
 function restNumber(){
     document.getElementById('numberone').textContent = 10;
+    second = document.getElementById('numberone').textContent;
 } 
 
 
