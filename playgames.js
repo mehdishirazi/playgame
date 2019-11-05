@@ -7,7 +7,14 @@ let six = document.getElementById('numberSix').textContent
 let seven = document.getElementById('numberSeven').textContent
 let eight = document.getElementById('numberEight').textContent
 let countDown = setInterval(count ,1000);
-let clickone = document.getElementById('numberOne'); 
+let txtone = document.getElementById('numberOne'); 
+let txttwo = document.getElementById('numberTwo');
+let txtthree = document.getElementById('numberThree');
+let txtfour = document.getElementById('numberFour');
+let txtfive = document.getElementById('numberFive');
+let txtsix = document.getElementById('numberSix');
+let txtseven = document.getElementById('numberSeven');
+let txteight = document.getElementById('numberEight');
 
 
 function count() {
@@ -33,10 +40,19 @@ function count() {
 }
 
 
-function restNumber(){
-    document.getElementById('numberOne').textContent = 10;
-    one = document.getElementById('numberOne').textContent;
+function restNumber(e){
+  debugger
+    document.getElementById(e.currentTarget.id).textContent = 10;
+    document.getElementById(e.currentTarget.id).textContent = document.getElementById(e.currentTarget.id).textContent;
 } 
 
 
-clickone.onclick = restNumber;
+txtone.onclick = restNumber;
+txttwo.onclick = restNumber;
+txtthree.onclick = restNumber;
+txtfour.onclick = restNumber;
+txtfive.onclick = restNumber;
+txtsix.onclick = restNumber;
+txtseven.onclick = restNumber;
+txteight.onclick = restNumber;
+
