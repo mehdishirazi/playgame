@@ -1,17 +1,17 @@
 let countDown = setInterval(count ,1000);
-let txtone = document.getElementById('btnOne'); 
-let txttwo = document.getElementById('btnTwo');
-let txtthree = document.getElementById('btnThree');
-let txtfour = document.getElementById('btnFour');
-let txtfive = document.getElementById('btnFive');
-let txtsix = document.getElementById('btnSix');
-let txtseven = document.getElementById('btnSeven');
-let txteight = document.getElementById('btnEight');
-let txtNine = document.getElementById('btnNine');
+let btnone = document.getElementById('btnOne'); 
+let btntwo = document.getElementById('btnTwo');
+let btnthree = document.getElementById('btnThree');
+let btnfour = document.getElementById('btnFour');
+let btnfive = document.getElementById('btnFive');
+let btnsix = document.getElementById('btnSix');
+let btnseven = document.getElementById('btnSeven');
+let btneight = document.getElementById('btnEight');
+let btnnine = document.getElementById('btnNine');
 
 
-function count() {
-    let buttonList = [txtone.value, txttwo.value];
+function Count() {
+    let buttonList = [btnone.value, btntwo.value];
     for (let i = 10; i < 0; i--){
             
     }
@@ -21,19 +21,19 @@ function count() {
 }
 
 
-function restNumber(e){
+function RestNumber(e){
   debugger
     document.getElementById(e.currentTarget.id).textContent = 10;
 } 
 
 
-txtone.onclick = restNumber;
-txttwo.onclick = restNumber;
-txtthree.onclick = restNumber;
-txtfour.onclick = restNumber;
-txtfive.onclick = restNumber;
-txtsix.onclick = restNumber;
-txtseven.onclick = restNumber;
-txteight.onclick = restNumber;
-txtNine.onclick = restNumber;
+txtone.onclick = RestNumber;
+txttwo.onclick = RestNumber;
+txtthree.onclick = RestNumber;
+txtfour.onclick = RestNumber;
+txtfive.onclick = RestNumber;
+txtsix.onclick = RestNumber;
+txtseven.onclick = RestNumber;
+txteight.onclick = RestNumber;
+txtNine.onclick = RestNumber;
 
