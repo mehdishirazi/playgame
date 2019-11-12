@@ -15,7 +15,16 @@ function Count() {
     for (let i = 10; i < 0; i--){
             
     }
-    if (one <= 0 || two <= 0 || three <= 0 || four <= 0 || five <= 0 || six <=0 || seven <= 0 || eight <= 0){
+    if(
+        btnone <= 0 || 
+        btntwo <= 0 || 
+        btnthree <= 0 || 
+        btnfour <= 0 || 
+        btnfive <= 0 || 
+        btnsix <=0 || 
+        btnseven <= 0 || 
+        btneight <= 0
+    ){
         clearInterval(countDown);
     }
 }
