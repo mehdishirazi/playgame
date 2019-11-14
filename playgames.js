@@ -1,4 +1,4 @@
-let countDown = setInterval(count ,1000);
+let countDown = setInterval(Count ,1000);
 let btnone = document.getElementById('btnOne'); 
 let btntwo = document.getElementById('btnTwo');
 let btnthree = document.getElementById('btnThree');
@@ -11,9 +11,10 @@ let btnnine = document.getElementById('btnNine');
 
 
 function Count() {
-    let buttonList = [btnone.value, btntwo.value];
-    for (let i = 10; i < 0; i--){
-            
+
+    for(let i = 0; i <= 10; i++){
+        console.log(document.getElementById('btnOne'))
+        --document.getElementById('btnOne').value; 
     }
     if(
         btnone <= 0 || 
@@ -36,13 +37,13 @@ function RestNumber(e){
 } 
 
 
-txtone.onclick = RestNumber;
-txttwo.onclick = RestNumber;
-txtthree.onclick = RestNumber;
-txtfour.onclick = RestNumber;
-txtfive.onclick = RestNumber;
-txtsix.onclick = RestNumber;
-txtseven.onclick = RestNumber;
-txteight.onclick = RestNumber;
-txtNine.onclick = RestNumber;
+btnone.onclick = RestNumber;
+btntwo.onclick = RestNumber;
+btnthree.onclick = RestNumber;
+btnfour.onclick = RestNumber;
+btnfive.onclick = RestNumber;
+btnsix.onclick = RestNumber;
+btnseven.onclick = RestNumber;
+btneight.onclick = RestNumber;
+btnnine.onclick = RestNumber;
 
