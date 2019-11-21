@@ -1,17 +1,27 @@
-let countDown = setInterval(Count ,1000);
-for(i=1; i < 10; i++){
-    id = 'btnNumber' + i;
-  document.getElementById(id).onclick = RestNumber;
-}
+let run = document.getElementById('btnRun')
+run.onclick = Run;
 
-function Count() {
+
+function Run(){
+let countDown = setInterval(Counter, 1000);
+
+
+function init(){
     for(i=1; i < 10; i++){
         id = 'btnNumber' + i;
-        document.getElementById(id).value = document.getElementById(id).value - 1;
-        if(document.getElementById(id).value <= 0){
-              if(document.getElementById(id).value === '0'){
-                document.getElementById(id).style.background = 'red';
-            }
+        document.getElementById(id).onclick = RestNumber;
+    }
+}
+
+
+function Counter() {
+    for(i=1; i < 10; i++){
+        id = 'btnNumber' + i;
+        btnNumber = document.getElementById(id);
+
+        btnNumber.value = btnNumber.value - 1;
+        if(btnNumber.value <= 0){
+            btnNumber.style.background = 'red';
             clearInterval(countDown);
         }
     } 
@@ -19,8 +29,10 @@ function Count() {
 
 
 function RestNumber(e){
-  debugger
     document.getElementById(e.currentTarget.id).value= 10;
 } 
 
+
+init()
+}
 
