@@ -1,11 +1,12 @@
 let run = document.getElementById('btnRun')
 run.onclick = Run;
-let a;
+let tableNumber;
+let timer;
 
 
 function CreateBtn(e){
-     a = document.getElementById('dropdown').value;
-     for(i = 1; i < a**2; i++){
+     tableNumber = document.getElementById('dropdown').value;
+     for(i = 1; i < tableNumber**2; i++){
          let btn = document.createElement("BUTTON");
          btn.id = "btnNumber" + i;
          btn.value = 10;
@@ -16,12 +17,24 @@ function CreateBtn(e){
 
 
 function Run(){
-  debugger
 let countDown = setInterval(Counter, 1000);
+let timeLeft = setInterval(Time, 1000);
+
+
+function Time(){
+    timer = document.getElementById('Timer').innerHTML; 
+    timer = timer -1;
+    document.getElementById('Timer').innerHTML = timer;
+    if(timer <= 0 || btnNumber.value < 0){
+        clearInterval(timeLeft);
+        alert ("You lOst");
+        return;
+    }
+}
 
 
 function init(){
-    for(i=1; i < a**2; i++){
+    for(i=1; i < tableNumber**2; i++){
         id = 'btnNumber' + i;
         document.getElementById(id).onclick = RestNumber;
     }
@@ -29,11 +42,12 @@ function init(){
 
 
 function Counter() {
-    for(i=1; i < a**2; i++){
+    for(i=1; i < tableNumber**2; i++){
         id = 'btnNumber' + i;
         btnNumber = document.getElementById(id);
 
         btnNumber.value = btnNumber.value - 1;
+        document.getElementById(id).innerHTML = btnNumber.value;
         if(btnNumber.value <= 0){
             btnNumber.style.background = 'red';
             clearInterval(countDown);
@@ -44,10 +58,12 @@ function Counter() {
 
 
 function RestNumber(e){
+  debugger
     document.getElementById(e.currentTarget.id).value= 10;
 } 
 
 
+Time()
 init()
 }
 
