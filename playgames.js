@@ -1,18 +1,28 @@
-let run = document.getElementById('btnRun')
+let run = document.getElementById('btnRun');
 run.onclick = Run;
-let tableNumber;
+let tableNumber = null;
 let timer;
 
 
-function CreateBtn(e){
-     tableNumber = document.getElementById('dropdown').value;
-     for(i = 1; i < tableNumber**2; i++){
-         let btn = document.createElement("BUTTON");
-         btn.id = "btnNumber" + i;
-         btn.value = 10;
-         btn.innerHTML = 10;
-         document.getElementById('buttons').appendChild(btn); 
-     } 
+function CreateBtn(){
+    if(tableNumber == null){
+        tableNumber = document.getElementById('dropdown').value;
+            for(i = 1; i < tableNumber**2; i++){
+                let btn = document.createElement("BUTTON");
+                btn.id = "btnNumber" + i;
+                btn.value = 10;
+                btn.innerHTML = 10;
+                document.getElementById('buttons').appendChild(btn); 
+            } 
+    } else{
+          for(i = 1; i < tableNumber**2; i++){
+              id = 'btnNumber' + i;
+               BTN = document.getElementById(id);
+               BTN.parentNode.removeChild(BTN);
+          }
+          tableNumber = null;
+          CreateBtn();
+    }
 }
 
 
@@ -25,7 +35,7 @@ function Time(){
     timer = document.getElementById('Timer').innerHTML; 
     timer = timer -1;
     document.getElementById('Timer').innerHTML = timer;
-    if(timer <= 0 || btnNumber.value < 0){
+    if(timer < 0){
         clearInterval(timeLeft);
         alert ("You lOst");
         return;
@@ -41,7 +51,7 @@ function init(){
 }
 
 
-function Counter() {
+function Counter(btnNumber) {
     for(i=1; i < tableNumber**2; i++){
         id = 'btnNumber' + i;
         btnNumber = document.getElementById(id);
@@ -52,14 +62,15 @@ function Counter() {
             btnNumber.style.background = 'red';
             clearInterval(countDown);
         }
-      console.log(btnNumber.value, document.getElementById(id).value, document.getElementById(id).innerHTML)
     } 
 }
 
 
 function RestNumber(e){
-  debugger
-    document.getElementById(e.currentTarget.id).value= 10;
+    document.getElementById(e.currentTarget.id).innerHTML = 10;
+    document.getElementById(e.currentTarget.id).value = 10;
+    btnNumber = document.getElementById(e.currentTarget.id);
+    return btnNumber;
 } 
 
 
