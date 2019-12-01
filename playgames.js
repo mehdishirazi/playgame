@@ -17,8 +17,8 @@ function CreateBtn(){
     } else{
           for(i = 1; i < tableNumber**2; i++){
               id = 'btnNumber' + i;
-               BTN = document.getElementById(id);
-               BTN.parentNode.removeChild(BTN);
+              BTN = document.getElementById(id);
+              BTN.parentNode.removeChild(BTN);
           }
           tableNumber = null;
           CreateBtn();
