@@ -5,7 +5,6 @@ let timer;
 
 
 function CreateBtn(){
-    if(tableNumber == null){
         tableNumber = document.getElementById('dropdown').value;
             for(i = 1; i < tableNumber**2; i++){
                 let btn = document.createElement("BUTTON");
@@ -13,22 +12,29 @@ function CreateBtn(){
                 btn.value = 10;
                 btn.innerHTML = 10;
                 document.getElementById('buttons').appendChild(btn); 
-            } 
-    } else{
-          for(i = 1; i < tableNumber**2; i++){
-              id = 'btnNumber' + i;
-              BTN = document.getElementById(id);
-              BTN.parentNode.removeChild(BTN);
-          }
+            }  
+}
+
+
+function ClearBtn(){
+    for(i = 1; i < tableNumber**2; i++){
+        id = 'btnNumber' + i;
+        BTN = document.getElementById(id);
+        BTN.parentNode.removeChild(BTN);
+    }
           tableNumber = null;
           CreateBtn();
-    }
 }
 
 
 function Run(){
-let countDown = setInterval(Counter, 1000);
-let timeLeft = setInterval(Time, 1000);
+    let countDown = setInterval(Counter, 10000);
+    let timeLeft = setInterval(Time, 10000);
+    Time();
+    init();
+    Counter(btnNumber);
+    RestNumber(e);
+}
 
 
 function Time(){
@@ -41,21 +47,21 @@ function Time(){
         return;
     }
 }
-
-
+    
+    
 function init(){
     for(i=1; i < tableNumber**2; i++){
-        id = 'btnNumber' + i;
-        document.getElementById(id).onclick = RestNumber;
+    id = 'btnNumber' + i;
+    document.getElementById(id).onclick = RestNumber;
     }
 }
-
-
+    
+    
 function Counter(btnNumber) {
     for(i=1; i < tableNumber**2; i++){
         id = 'btnNumber' + i;
         btnNumber = document.getElementById(id);
-
+    
         btnNumber.value = btnNumber.value - 1;
         document.getElementById(id).innerHTML = btnNumber.value;
         if(btnNumber.value <= 0){
@@ -64,17 +70,12 @@ function Counter(btnNumber) {
         }
     } 
 }
-
-
+    
+    
 function RestNumber(e){
     document.getElementById(e.currentTarget.id).innerHTML = 10;
     document.getElementById(e.currentTarget.id).value = 10;
     btnNumber = document.getElementById(e.currentTarget.id);
     return btnNumber;
 } 
-
-
-Time()
-init()
-}
 
