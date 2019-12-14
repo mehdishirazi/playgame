@@ -2,22 +2,23 @@ let run = document.getElementById('btnRun');
 run.onclick = Run;
 let tableNumber = null;
 let timer;
+let countDown = null; 
 
 
-function CreateBtn(){
-        tableNumber = document.getElementById('dropdown').value;
-            for(i = 1; i < tableNumber**2; i++){
-                let btn = document.createElement("BUTTON");
-                btn.id = "btnNumber" + i;
-                btn.value = 10;
-                btn.innerHTML = 10;
-                document.getElementById('buttons').appendChild(btn); 
-            }  
+function CreateBtn(tableNumber){
+    for(i = 1; i <= tableNumber**2; i++){
+        let btn = document.createElement("BUTTON");
+        btn.id = "btnNumber" + i;
+        btn.value = 10;
+        btn.innerHTML = 10;
+        document.getElementById('buttons').appendChild(btn); 
+        document.getElementById(btn.id).onclick = RestNumber;
+    }  
 }
 
 
 function ClearBtn(){
-    for(i = 1; i < tableNumber**2; i++){
+    for(i = 1; i <= tableNumber**2; i++){
         id = 'btnNumber' + i;
         BTN = document.getElementById(id);
         BTN.parentNode.removeChild(BTN);
@@ -28,12 +29,11 @@ function ClearBtn(){
 
 
 function Run(){
-    let countDown = setInterval(Counter, 10000);
-    let timeLeft = setInterval(Time, 10000);
+    countDown = setInterval(Counter, 1000);
+    let timeLeft = setInterval(Time, 1000);
     Time();
     init();
-    Counter(btnNumber);
-    RestNumber(e);
+    Counter();
 }
 
 
@@ -49,16 +49,15 @@ function Time(){
 }
     
     
-function init(){
-    for(i=1; i < tableNumber**2; i++){
-    id = 'btnNumber' + i;
-    document.getElementById(id).onclick = RestNumber;
-    }
+function Init(){
+  debugger
+    tableNumber = document.getElementById('dropdown').value;
+    CreateBtn(tableNumber);
 }
     
     
-function Counter(btnNumber) {
-    for(i=1; i < tableNumber**2; i++){
+function Counter() {
+    for(i=1; i <= tableNumber**2; i++){
         id = 'btnNumber' + i;
         btnNumber = document.getElementById(id);
     
@@ -75,7 +74,5 @@ function Counter(btnNumber) {
 function RestNumber(e){
     document.getElementById(e.currentTarget.id).innerHTML = 10;
     document.getElementById(e.currentTarget.id).value = 10;
-    btnNumber = document.getElementById(e.currentTarget.id);
-    return btnNumber;
 } 
 
