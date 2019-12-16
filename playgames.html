@@ -1,17 +1,18 @@
 <html>
     <head>
-        <title>playgames</title>
     </head>
     <body>
-      <span id="numberOne">10</span>
-      <span id="numberTwo">10</span>
-      <span id="numberThree">10</span>
-      <span id="numberFour">10</span>
-      <span id="numberFive">10</span>
-      <span id="numberSix">10</span>
-      <span id="numberSeven">10</span>
-      <span id="numberEight">10</span>
-      <script src="playgames.js"></script>
+      <select id="dropdown" onchange="Init()">
+        <option value="0">None</option>
+        <option value="3">3*3</option>
+        <option value="4">4*4</option>
+        <option value="5">5*5</option>
+      </select>
+      <div id="buttons"></div>
+      <p id="Timer" value="45">45</p>
+      <button id="btnRun" style="margin: 10px" >Click here to Start</button>
+      <button id="endGame" style="margin: 25px" onclick="ClearBtn()">Click here to End the Game</button>
+    <script src="playgames.js"></script>
     </body>
 </html>
 

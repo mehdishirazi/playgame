@@ -1,58 +1,76 @@
-let one = document.getElementById('numberOne').textContent
-let two = document.getElementById('numberTwo').textContent
-let three = document.getElementById('numberThree').textContent
-let four = document.getElementById('numberFour').textContent
-let five = document.getElementById('numberFive').textContent
-let six = document.getElementById('numberSix').textContent
-let seven = document.getElementById('numberSeven').textContent
-let eight = document.getElementById('numberEight').textContent
-let countDown = setInterval(count ,1000);
-let txtone = document.getElementById('numberOne'); 
-let txttwo = document.getElementById('numberTwo');
-let txtthree = document.getElementById('numberThree');
-let txtfour = document.getElementById('numberFour');
-let txtfive = document.getElementById('numberFive');
-let txtsix = document.getElementById('numberSix');
-let txtseven = document.getElementById('numberSeven');
-let txteight = document.getElementById('numberEight');
+let run = document.getElementById('btnRun');
+run.onclick = Start;
+let timer;
+let countDown = null; 
 
 
-function count() {
-    one--; 
-    two--; 
-    three--;
-    four--;
-    five--; 
-    six--;
-    seven--;
-    eight--;
-    document.getElementById('numberOne').textContent = one; 
-    document.getElementById('numberTwo').textContent = two; 
-    document.getElementById('numberThree').textContent = three; 
-    document.getElementById('numberFour').textContent = four; 
-    document.getElementById('numberFive').textContent = five; 
-    document.getElementById('numberSix').textContent = six; 
-    document.getElementById('numberSeven').textContent = seven; 
-    document.getElementById('numberEight').textContent = eight; 
-    if (one <= 0 || two <= 0 || three <= 0 || four <= 0 || five <= 0 || six <=0 || seven <= 0 || eight <= 0){
-        clearInterval(countDown);
+function CreateBtn(tableNumber){
+  debugger
+    for(i = 1; i <= tableNumber**2; i++){
+        let btn = document.createElement("BUTTON");
+        btn.id = "btnNumber" + i;
+        btn.value = 10;
+        btn.innerHTML = 10;
+        document.getElementById('buttons').appendChild(btn); 
+        document.getElementById(btn.id).onclick = RestNumber;
+    }  
+}
+
+
+function ClearBtn(tableNumber){
+  debugger
+    for(i = 1; i <= tableNumber**2; i++){
+        id = 'btnNumber' + i;
+        BTN = document.getElementById(id);
+        BTN.parentNode.removeChild(BTN);
     }
 }
 
 
-function restNumber(e){
+function Start(){
+    timer = document.getElementById('Timer').innerHTML; 
+    countDown = setInterval(Counter, 1000);
+    let timeLeft = setInterval(Time, 1000);
+    Time(timer);
+    Counter();
+}
+
+
+function Time(timer){
   debugger
-    document.getElementById(e.currentTarget.id).textContent = 10;
-    document.getElementById(e.currentTarget.id).textContent = document.getElementById(e.currentTarget.id).textContent;
+    timer = timer -1;
+    document.getElementById('Timer').innerHTML = timer;
+    if(timer < 0){
+        clearInterval(timeLeft);
+        alert ("You lOst");
+        return;
+    }
+}
+    
+    
+function Init(){
+    tableNumber = document.getElementById('dropdown').value;
+    CreateBtn(tableNumber);
+}
+    
+    
+function Counter() {
+    for(i=1; i <= tableNumber**2; i++){
+        id = 'btnNumber' + i;
+        btnNumber = document.getElementById(id);
+    
+        btnNumber.value = btnNumber.value - 1;
+        document.getElementById(id).innerHTML = btnNumber.value;
+        if(btnNumber.value <= 0){
+            btnNumber.style.background = 'red';
+            clearInterval(countDown);
+        }
+    } 
+}
+    
+    
+function RestNumber(e){
+    document.getElementById(e.currentTarget.id).innerHTML = 10;
+    document.getElementById(e.currentTarget.id).value = 10;
 } 
-
-
-txtone.onclick = restNumber;
-txttwo.onclick = restNumber;
-txtthree.onclick = restNumber;
-txtfour.onclick = restNumber;
-txtfive.onclick = restNumber;
-txtsix.onclick = restNumber;
-txtseven.onclick = restNumber;
-txteight.onclick = restNumber;
 
