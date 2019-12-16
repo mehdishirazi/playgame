@@ -1,6 +1,5 @@
 let run = document.getElementById('btnRun');
-run.onclick = Run;
-let tableNumber = null;
+run.onclick = Start;
 let timer;
 let countDown = null; 
 
@@ -33,12 +32,29 @@ function Run(){
     let timeLeft = setInterval(Time, 1000);
     Time();
     init();
+}
+
+
+function ClearBtn(tableNumber){
+  debugger
+    for(i = 1; i <= tableNumber**2; i++){
+        id = 'btnNumber' + i;
+        BTN = document.getElementById(id);
+        BTN.parentNode.removeChild(BTN);
+    }
+}
+
+
+function Start(){
+    timer = document.getElementById('Timer').innerHTML; 
+    countDown = setInterval(Counter, 1000);
+    let timeLeft = setInterval(Time, 1000);
+    Time(timer);
     Counter();
 }
 
 
-function Time(){
-    timer = document.getElementById('Timer').innerHTML; 
+function Time(timer){
     timer = timer -1;
     document.getElementById('Timer').innerHTML = timer;
     if(timer < 0){
@@ -50,7 +66,6 @@ function Time(){
     
     
 function Init(){
-  debugger
     tableNumber = document.getElementById('dropdown').value;
     CreateBtn(tableNumber);
 }
