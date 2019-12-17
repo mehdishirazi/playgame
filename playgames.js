@@ -2,6 +2,7 @@ let run = document.getElementById('btnRun');
 run.onclick = Start;
 let timer;
 let countDown = null; 
+let tableNumber = null;
 
 
 function CreateBtn(tableNumber){
@@ -16,48 +17,32 @@ function CreateBtn(tableNumber){
 }
 
 
-function ClearBtn(){
+function ClearBtn(tableNumber){
     for(i = 1; i <= tableNumber**2; i++){
         id = 'btnNumber' + i;
         BTN = document.getElementById(id);
         BTN.parentNode.removeChild(BTN);
     }
           tableNumber = null;
-          CreateBtn();
-}
-
-
-function Run(){
-    countDown = setInterval(Counter, 1000);
-    let timeLeft = setInterval(Time, 1000);
-    Time();
-    init();
-}
-
-
-function ClearBtn(tableNumber){
-  debugger
-    for(i = 1; i <= tableNumber**2; i++){
-        id = 'btnNumber' + i;
-        BTN = document.getElementById(id);
-        BTN.parentNode.removeChild(BTN);
+    if(tableNumber == null){
+        document.getElementById('dropdown').disabled = false;
     }
 }
 
 
 function Start(){
-    timer = document.getElementById('Timer').innerHTML; 
     countDown = setInterval(Counter, 1000);
     let timeLeft = setInterval(Time, 1000);
-    Time(timer);
+    Time(timeLeft);
     Counter();
 }
 
 
-function Time(timer){
+function Time(timeLeft){
+    timer = document.getElementById('Timer').innerHTML; 
     timer = timer -1;
     document.getElementById('Timer').innerHTML = timer;
-    if(timer < 0){
+    if(timer <= 0){
         clearInterval(timeLeft);
         alert ("You lOst");
         return;
@@ -67,6 +52,9 @@ function Time(timer){
     
 function Init(){
     tableNumber = document.getElementById('dropdown').value;
+    if(tableNumber !== null){
+        document.getElementById('dropdown').disabled = true;
+    }
     CreateBtn(tableNumber);
 }
     
